@@ -6,7 +6,7 @@ import matplotlib.pyplot as plt
 
 import helper
 
-path = "../data/corruptmnist"
+path = "../../data/corruptmnist"
 
 test_files = ["\\".join([path,os.listdir(path)[0]])]
 train_files = ["\\".join([path,x]) for x in os.listdir(path)[1:6]]

@@ -196,7 +196,7 @@ class TrainOREvaluate(object):
         with torch.no_grad():
             test_loss, accuracy = self.validation(model, testloader, criterion, eval=True)
 
-        print(accuracy)
+        print("Test accuracy:", accuracy)
 
     def load_checkpoint_FFNN(self, filepath):
         checkpoint = torch.load(filepath)
