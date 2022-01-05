@@ -11,7 +11,7 @@ from datetime import datetime as dt
 import os
 
 # Own imports
-from model import FFNN, CNN
+from src.models.model import FFNN, CNN
 from src.data.data import mnist
 
 # Fix SKlearn

@@ -12,3 +12,21 @@ python src/visualization/visualize.py visualize --ckpt models/corrupted_mnist_mo
 
 # TO-DO
 Implement DVC and new data
+
+# The argument after the .py file indicates which method is called when the file is run. 
+# This method can then be called with additional arguments as normally
+
+# Docker code #
+
+# build the docker for trainer
+docker build -f trainer.dockerfile . -t trainer:latest
+
+# build the docker for predictions (not implemented correctly)
+docker build -f predict.dockerfile . -t predict:latest
+
+# training
+docker run --name train_model --rm -v train trainer2:latest train
+
+# predictions (not implemented correctly)
+docker run --name predict_model --rm -v evaluate -v --ckpt models/corrupted_mnist_model_0104_1542_57/ckpt/checkpoint_CNN.pth predict:latest evaluate --ckpt models/corrupted_mnist_model_0104_1542_57/ckpt/checkpoint_CNN.pth
+

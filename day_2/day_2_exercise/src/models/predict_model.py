@@ -5,7 +5,7 @@ import torch
 from torch import nn, optim
 
 from src.data.data import mnist
-from model import CNN
+from src.models.model import CNN
 
 class Evaluate(object):
     """ Helper class that will help launch class methods as commands
