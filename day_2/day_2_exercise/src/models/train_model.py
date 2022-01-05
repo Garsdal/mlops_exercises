@@ -26,23 +26,23 @@ def setup_folders(folder, subfolder):
         os.makedirs(folder + subfolder)
 
 # We create a function to init training from the yaml file
-@hydra.main(config_name='train.yaml')
-def train(cfg, model):
-    print(f"configuration: \n {OmegaConf.to_yaml(cfg)}")
-    train_params = cfg
+#@hydra.main(config_name='train.yaml')
+def train():
+    #print(f"configuration: \n {OmegaConf.to_yaml(cfg)}")
+    #train_params = cfg
 
     # We define training params to be used in the script
-    epochs = train_params['n_epochs']
-    batch_size = train_params['batch_size']
-    lr = train_params['lr']
-    seed = train_params['seed']
+    #epochs = train_params['n_epochs']
+    #batch_size = train_params['batch_size']
+    #lr = train_params['lr']
+    #seed = train_params['seed']
 
-    print("wd", os.getcwd())
+    #print("wd", os.getcwd())
 
     # We still have some leftover arguments
     parser = argparse.ArgumentParser(description='Training arguments')
-    # parser.add_argument('--lr', default=0.1)
-    # parser.add_argument('--epochs', default=5)
+    parser.add_argument('--lr', default=0.1)
+    parser.add_argument('--epochs', default=5)
     parser.add_argument('--path_out_model', default='models/')
     parser.add_argument('--path_out_fig', default='reports/figures/')
     # # add any additional argument that you want
@@ -55,42 +55,42 @@ def train(cfg, model):
     setup_folders(save_folder_model, 'ckpt')
 
     # We set a seed
-    torch.manual_seed(seed)
+    torch.manual_seed(42)
 
     # HERE WE CREATE TRAINLOADER AND TESTLOADER FROM PROCESSED DATA | we made a data.py file to save these
-    #batch_size = 64
-    train_files = ['../../../data/processed/train_images.pt', '../../../data/processed/train_labels.pt']
-    test_files = ['../../../data/processed/test_images.pt', '../../../data/processed/test_labels.pt']
+    batch_size = 64
+    train_files = ['data/processed/train_images.pt', 'data/processed/train_labels.pt']
+    test_files = ['data/processed/test_images.pt', 'data/processed/test_labels.pt']
     trainloader, testloader = mnist(train_files, test_files, batch_size = batch_size)
     
     # We actually don't need all of the below since we give this in model.yaml | not the best implementation
     # For pytorch lightning we should make the CNN class more customizable and put these hyperparams in model.yaml
-    #images, labels = next(iter(trainloader))
+    images, labels = next(iter(trainloader))
 
     # Reshape an image to the correct size
-    #images = images.view(batch_size, 1, images.shape[1], images.shape[2])
+    images = images.view(batch_size, 1, images.shape[1], images.shape[2])
 
     # hyperparameters of the model
-    # num_classes = 10
-    # channels = images.shape[1]
-    # height = images.shape[2]
-    # width = images.shape[3]
+    num_classes = 10
+    channels = images.shape[1]
+    height = images.shape[2]
+    width = images.shape[3]
 
     # Define model
-    #model = CNN(num_classes, channels, height, width)
+    model = CNN(num_classes, channels, height, width)
     #hydra.instance().clear()
     #model, num_classes, channels, height, width = create_model()
     #print(model)
 
     criterion = nn.CrossEntropyLoss()
-    optimizer = optim.Adam(model.parameters(), lr=lr)
+    optimizer = optim.Adam(model.parameters(), lr=0.01)
 
     steps = 0
     running_loss = 0
     print_every = 64
 
     train_loss = []
-    for e in range(int(epochs)):
+    for e in range(int(args.epochs)):
         # Model in training mode, dropout is on
         model.train()
         for images, labels in trainloader:
@@ -117,7 +117,7 @@ def train(cfg, model):
                 with torch.no_grad():
                     test_loss, accuracy = validation(model, testloader, criterion)
                 
-                print("Epoch: {}/{}.. ".format(e+1, epochs),
+                print("Epoch: {}/{}.. ".format(e+1, args.epochs),
                     "Training Loss: {:.3f}.. ".format(running_loss/print_every),
                     "Test Loss: {:.3f}.. ".format(test_loss/len(testloader)),
                     "Test Accuracy: {:.3f}".format(accuracy/len(testloader)))
@@ -202,6 +202,4 @@ def validation(model, testloader, criterion, eval = False):
     return test_loss, accuracy 
 
 if __name__ == '__main__':
-    model = create_model()
-    print("list:", list)
-    train(model)
+    train()
