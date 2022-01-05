@@ -1,0 +1,4 @@
+num_classes: 10
+channels: 1
+height: 28
+width: 28
