@@ -14,9 +14,6 @@ from src.data.data import mnist
 train_files = ['data/processed/train_images.pt', 'data/processed/train_labels.pt']
 test_files = ['data/processed/test_images.pt', 'data/processed/test_labels.pt']
 
-train_files = ['data/interim/train_images.pt', 'data/interim/train_labels.pt']
-test_files = ['data/interim/test_images.pt', 'data/interim/test_labels.pt']
-
 check = False
 # We check for files
 bools = []
