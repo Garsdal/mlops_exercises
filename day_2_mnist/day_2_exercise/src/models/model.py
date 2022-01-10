@@ -37,15 +37,16 @@ class FFNN(nn.Module):
         return F.log_softmax(x, dim=1)
 
 class CNN(nn.Module):
-    def __init__(self, num_classes, channels, height, width):
+    def __init__(self, num_classes, channels, height, width, num_filters):
         super(CNN, self).__init__()
         self.num_classes = num_classes
         self.channels = channels
         self.height = height
         self.width = width
+        self.num_filters = num_filters
         
         # Not good code but we save parameters manually
-        num_filters_conv1 = 16
+        num_filters_conv1 = num_filters
         kernel_size_conv1 = 5 # [height, width]
         stride_conv1 = 1 # [stride_height, stride_width]
         stride_conv2 = 1

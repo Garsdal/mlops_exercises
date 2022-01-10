@@ -34,4 +34,4 @@ def mnist(train_files, test_files, batch_size = 64):
                             shuffle=True,
                             num_workers=0)
 
-        return(train_loader, test_loader)
+        return(train_loader, test_loader, train_set, test_set)

@@ -1,10 +1,7 @@
 # local package
 -e .
-torch
-matplotlib
-numpy
-sklearn
-hydra
+pytest
+coverage
 
 # external requirements
 click

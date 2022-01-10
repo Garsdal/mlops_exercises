@@ -41,7 +41,7 @@ def train():
 
     # We still have some leftover arguments
     parser = argparse.ArgumentParser(description='Training arguments')
-    parser.add_argument('--lr', default=0.1)
+    parser.add_argument('--lr', default=0.01)
     parser.add_argument('--epochs', default=5)
     parser.add_argument('--path_out_model', default='models/')
     parser.add_argument('--path_out_fig', default='reports/figures/')
@@ -55,13 +55,13 @@ def train():
     setup_folders(save_folder_model, 'ckpt')
 
     # We set a seed
-    torch.manual_seed(42)
+    torch.manual_seed(123)
 
     # HERE WE CREATE TRAINLOADER AND TESTLOADER FROM PROCESSED DATA | we made a data.py file to save these
     batch_size = 64
     train_files = ['data/processed/train_images.pt', 'data/processed/train_labels.pt']
     test_files = ['data/processed/test_images.pt', 'data/processed/test_labels.pt']
-    trainloader, testloader = mnist(train_files, test_files, batch_size = batch_size)
+    trainloader, testloader, train_set, test_set = mnist(train_files, test_files, batch_size = batch_size)
     
     # We actually don't need all of the below since we give this in model.yaml | not the best implementation
     # For pytorch lightning we should make the CNN class more customizable and put these hyperparams in model.yaml
@@ -75,9 +75,10 @@ def train():
     channels = images.shape[1]
     height = images.shape[2]
     width = images.shape[3]
+    num_filters = 16
 
     # Define model
-    model = CNN(num_classes, channels, height, width)
+    model = CNN(num_classes, channels, height, width, num_filters)
     #hydra.instance().clear()
     #model, num_classes, channels, height, width = create_model()
     #print(model)
