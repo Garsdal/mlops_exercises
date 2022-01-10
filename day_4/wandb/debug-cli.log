@@ -1,0 +1,164 @@
+2022-01-07 15:55:59 INFO Running runs: []
+2022-01-07 15:55:59 INFO Agent received command: run
+2022-01-07 15:55:59 INFO Agent starting run with config:
+	epochs: [20, 40, 60, 80, 100]
+	latent_dim: 30
+	lr: 0.001
+2022-01-07 15:55:59 INFO About to run command: python vae_mnist_working.py "--epochs=[20, 40, 60, 80, 100]" --latent_dim=30 --lr=0.001
+2022-01-07 15:56:04 INFO Running runs: ['s84wfafi']
+2022-01-07 15:57:49 INFO Cleaning up finished run: s84wfafi
+2022-01-07 15:57:49 INFO Agent received command: run
+2022-01-07 15:57:49 INFO Agent starting run with config:
+	epochs: [20, 40, 60, 80, 100]
+	latent_dim: 10
+	lr: 0.003
+2022-01-07 15:57:49 INFO About to run command: python vae_mnist_working.py "--epochs=[20, 40, 60, 80, 100]" --latent_dim=10 --lr=0.003
+2022-01-07 15:57:54 INFO Running runs: ['vwd0iedz']
+2022-01-07 15:59:44 INFO Cleaning up finished run: vwd0iedz
+2022-01-07 15:59:45 INFO Agent received command: run
+2022-01-07 15:59:45 INFO Agent starting run with config:
+	epochs: [20, 40, 60, 80, 100]
+	latent_dim: 20
+	lr: 0.003
+2022-01-07 15:59:45 INFO About to run command: python vae_mnist_working.py "--epochs=[20, 40, 60, 80, 100]" --latent_dim=20 --lr=0.003
+2022-01-07 15:59:50 INFO Running runs: ['ewlklbtx']
+2022-01-07 16:01:28 INFO Cleaning up finished run: ewlklbtx
+2022-01-07 16:01:29 INFO Agent received command: run
+2022-01-07 16:01:29 INFO Agent starting run with config:
+	epochs: [20, 40, 60, 80, 100]
+	latent_dim: 10
+	lr: 0.001
+2022-01-07 16:01:29 INFO About to run command: python vae_mnist_working.py "--epochs=[20, 40, 60, 80, 100]" --latent_dim=10 --lr=0.001
+2022-01-07 16:01:34 INFO Running runs: ['szm61i65']
+2022-01-07 16:03:14 INFO Cleaning up finished run: szm61i65
+2022-01-07 16:03:14 INFO Agent received command: run
+2022-01-07 16:03:14 INFO Agent starting run with config:
+	epochs: [20, 40, 60, 80, 100]
+	latent_dim: 20
+	lr: 0.001
+2022-01-07 16:03:14 INFO About to run command: python vae_mnist_working.py "--epochs=[20, 40, 60, 80, 100]" --latent_dim=20 --lr=0.001
+2022-01-07 16:03:19 INFO Running runs: ['0z14awsp']
+2022-01-07 16:04:58 INFO Cleaning up finished run: 0z14awsp
+2022-01-07 16:04:58 INFO Agent received command: run
+2022-01-07 16:04:58 INFO Agent starting run with config:
+	epochs: [20, 40, 60, 80, 100]
+	latent_dim: 20
+	lr: 0.01
+2022-01-07 16:04:58 INFO About to run command: python vae_mnist_working.py "--epochs=[20, 40, 60, 80, 100]" --latent_dim=20 --lr=0.01
+2022-01-07 16:05:04 INFO Running runs: ['3kpbpq5j']
+2022-01-07 16:06:52 INFO Cleaning up finished run: 3kpbpq5j
+2022-01-07 16:06:53 INFO Agent received command: run
+2022-01-07 16:06:53 INFO Agent starting run with config:
+	epochs: [20, 40, 60, 80, 100]
+	latent_dim: 10
+	lr: 0.003
+2022-01-07 16:06:53 INFO About to run command: python vae_mnist_working.py "--epochs=[20, 40, 60, 80, 100]" --latent_dim=10 --lr=0.003
+2022-01-07 16:06:58 INFO Running runs: ['crgm0sq6']
+2022-01-07 16:09:29 INFO Cleaning up finished run: crgm0sq6
+2022-01-07 16:09:30 INFO Agent received command: run
+2022-01-07 16:09:30 INFO Agent starting run with config:
+	epochs: [20, 40, 60, 80, 100]
+	latent_dim: 50
+	lr: 0.01
+2022-01-07 16:09:30 INFO About to run command: python vae_mnist_working.py "--epochs=[20, 40, 60, 80, 100]" --latent_dim=50 --lr=0.01
+2022-01-07 16:09:35 INFO Running runs: ['3s7d2exc']
+2022-01-07 16:11:40 INFO Cleaning up finished run: 3s7d2exc
+2022-01-07 16:11:41 INFO Agent received command: run
+2022-01-07 16:11:41 INFO Agent starting run with config:
+	epochs: [20, 40, 60, 80, 100]
+	latent_dim: 5
+	lr: 0.01
+2022-01-07 16:11:41 INFO About to run command: python vae_mnist_working.py "--epochs=[20, 40, 60, 80, 100]" --latent_dim=5 --lr=0.01
+2022-01-07 16:11:46 INFO Running runs: ['61eo5wmn']
+2022-01-07 16:13:50 INFO Cleaning up finished run: 61eo5wmn
+2022-01-07 16:13:51 INFO Agent received command: run
+2022-01-07 16:13:51 INFO Agent starting run with config:
+	epochs: [20, 40, 60, 80, 100]
+	latent_dim: 50
+	lr: 0.01
+2022-01-07 16:13:51 INFO About to run command: python vae_mnist_working.py "--epochs=[20, 40, 60, 80, 100]" --latent_dim=50 --lr=0.01
+2022-01-07 16:13:56 INFO Running runs: ['c6yx8otu']
+2022-01-07 16:15:45 INFO Cleaning up finished run: c6yx8otu
+2022-01-07 16:15:46 INFO Agent received command: run
+2022-01-07 16:15:46 INFO Agent starting run with config:
+	epochs: [20, 40, 60, 80, 100]
+	latent_dim: 30
+	lr: 0.003
+2022-01-07 16:15:46 INFO About to run command: python vae_mnist_working.py "--epochs=[20, 40, 60, 80, 100]" --latent_dim=30 --lr=0.003
+2022-01-07 16:15:51 INFO Running runs: ['tylmou77']
+2022-01-07 16:17:45 INFO Cleaning up finished run: tylmou77
+2022-01-07 16:17:45 INFO Agent received command: run
+2022-01-07 16:17:45 INFO Agent starting run with config:
+	epochs: [20, 40, 60, 80, 100]
+	latent_dim: 10
+	lr: 0.01
+2022-01-07 16:17:45 INFO About to run command: python vae_mnist_working.py "--epochs=[20, 40, 60, 80, 100]" --latent_dim=10 --lr=0.01
+2022-01-07 16:17:50 INFO Running runs: ['gmbxc5r0']
+2022-01-07 16:19:41 INFO Cleaning up finished run: gmbxc5r0
+2022-01-07 16:19:41 INFO Agent received command: run
+2022-01-07 16:19:41 INFO Agent starting run with config:
+	epochs: [20, 40, 60, 80, 100]
+	latent_dim: 10
+	lr: 0.003
+2022-01-07 16:19:41 INFO About to run command: python vae_mnist_working.py "--epochs=[20, 40, 60, 80, 100]" --latent_dim=10 --lr=0.003
+2022-01-07 16:19:46 INFO Running runs: ['i5p5buzl']
+2022-01-07 16:21:49 INFO Cleaning up finished run: i5p5buzl
+2022-01-07 16:21:49 INFO Agent received command: run
+2022-01-07 16:21:49 INFO Agent starting run with config:
+	epochs: [20, 40, 60, 80, 100]
+	latent_dim: 5
+	lr: 0.003
+2022-01-07 16:21:49 INFO About to run command: python vae_mnist_working.py "--epochs=[20, 40, 60, 80, 100]" --latent_dim=5 --lr=0.003
+2022-01-07 16:21:54 INFO Running runs: ['cqbplh4z']
+2022-01-07 16:22:05 INFO Agent received command: stop
+2022-01-07 16:22:05 INFO Stop: cqbplh4z
+2022-01-07 16:22:10 INFO Agent received command: stop
+2022-01-07 16:22:15 INFO Agent received command: stop
+2022-01-07 16:22:20 INFO Cleaning up finished run: cqbplh4z
+2022-01-07 16:22:21 INFO Agent received command: run
+2022-01-07 16:22:21 INFO Agent starting run with config:
+	epochs: [20, 40, 60, 80, 100]
+	latent_dim: 50
+	lr: 0.001
+2022-01-07 16:22:21 INFO About to run command: python vae_mnist_working.py "--epochs=[20, 40, 60, 80, 100]" --latent_dim=50 --lr=0.001
+2022-01-07 16:22:26 INFO Running runs: ['clgcqd9k']
+2022-01-07 16:24:25 INFO Cleaning up finished run: clgcqd9k
+2022-01-07 16:24:26 INFO Agent received command: run
+2022-01-07 16:24:26 INFO Agent starting run with config:
+	epochs: [20, 40, 60, 80, 100]
+	latent_dim: 20
+	lr: 0.001
+2022-01-07 16:24:26 INFO About to run command: python vae_mnist_working.py "--epochs=[20, 40, 60, 80, 100]" --latent_dim=20 --lr=0.001
+2022-01-07 16:24:31 INFO Running runs: ['gjvr4ays']
+2022-01-07 16:26:30 INFO Cleaning up finished run: gjvr4ays
+2022-01-07 16:26:31 INFO Agent received command: run
+2022-01-07 16:26:31 INFO Agent starting run with config:
+	epochs: [20, 40, 60, 80, 100]
+	latent_dim: 5
+	lr: 0.01
+2022-01-07 16:26:31 INFO About to run command: python vae_mnist_working.py "--epochs=[20, 40, 60, 80, 100]" --latent_dim=5 --lr=0.01
+2022-01-07 16:26:36 INFO Running runs: ['kjm0n6ug']
+2022-01-07 16:28:21 INFO Cleaning up finished run: kjm0n6ug
+2022-01-07 16:28:21 INFO Agent received command: run
+2022-01-07 16:28:21 INFO Agent starting run with config:
+	epochs: [20, 40, 60, 80, 100]
+	latent_dim: 50
+	lr: 0.003
+2022-01-07 16:28:21 INFO About to run command: python vae_mnist_working.py "--epochs=[20, 40, 60, 80, 100]" --latent_dim=50 --lr=0.003
+2022-01-07 16:28:26 INFO Running runs: ['oquipsjl']
+2022-01-07 16:30:05 INFO Cleaning up finished run: oquipsjl
+2022-01-07 16:30:05 INFO Agent received command: run
+2022-01-07 16:30:05 INFO Agent starting run with config:
+	epochs: [20, 40, 60, 80, 100]
+	latent_dim: 20
+	lr: 0.001
+2022-01-07 16:30:06 INFO About to run command: python vae_mnist_working.py "--epochs=[20, 40, 60, 80, 100]" --latent_dim=20 --lr=0.001
+2022-01-07 16:30:11 INFO Running runs: ['jk54qnvv']
+2022-01-07 16:31:49 INFO Cleaning up finished run: jk54qnvv
+2022-01-07 16:31:50 INFO Agent received command: run
+2022-01-07 16:31:50 INFO Agent starting run with config:
+	epochs: [20, 40, 60, 80, 100]
+	latent_dim: 30
+	lr: 0.01
+2022-01-07 16:31:50 INFO About to run command: python vae_mnist_working.py "--epochs=[20, 40, 60, 80, 100]" --latent_dim=30 --lr=0.01
+2022-01-07 16:31:55 INFO Running runs: ['4wf0a1bl']

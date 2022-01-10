@@ -1,0 +1,22 @@
+
+Start training VAE...
+Traceback (most recent call last):
+  File "C:\Users\Garsdal\Documents\GitHub\mlops_exercises\day_4\vae_mnist_working.py", line 122, in <module>
+    for batch_idx, (x, _) in enumerate(train_loader):
+  File "C:\Users\Garsdal\Anaconda3\envs\env_DL\lib\site-packages\torch\utils\data\dataloader.py", line 521, in __next__
+    data = self._next_data()
+  File "C:\Users\Garsdal\Anaconda3\envs\env_DL\lib\site-packages\torch\utils\data\dataloader.py", line 561, in _next_data
+    data = self._dataset_fetcher.fetch(index)  # may raise StopIteration
+  File "C:\Users\Garsdal\Anaconda3\envs\env_DL\lib\site-packages\torch\utils\data\_utils\fetch.py", line 49, in fetch
+    data = [self.dataset[idx] for idx in possibly_batched_index]
+  File "C:\Users\Garsdal\Anaconda3\envs\env_DL\lib\site-packages\torch\utils\data\_utils\fetch.py", line 49, in <listcomp>
+    data = [self.dataset[idx] for idx in possibly_batched_index]
+  File "C:\Users\Garsdal\Anaconda3\envs\env_DL\lib\site-packages\torchvision\datasets\mnist.py", line 134, in __getitem__
+    img = self.transform(img)
+  File "C:\Users\Garsdal\Anaconda3\envs\env_DL\lib\site-packages\torchvision\transforms\transforms.py", line 61, in __call__
+    img = t(img)
+  File "C:\Users\Garsdal\Anaconda3\envs\env_DL\lib\site-packages\torchvision\transforms\transforms.py", line 98, in __call__
+    return F.to_tensor(pic)
+  File "C:\Users\Garsdal\Anaconda3\envs\env_DL\lib\site-packages\torchvision\transforms\functional.py", line 150, in to_tensor
+    return img.to(dtype=default_float_dtype).div(255)
+KeyboardInterrupt

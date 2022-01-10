@@ -1,0 +1,9 @@
+
+Start training VAE...
+	Epoch 1 complete! 	Average Loss:  135.96499033219428
+	Epoch 2 complete! 	Average Loss:  99.5547493217863
+Finish!!
+Traceback (most recent call last):
+  File "C:\Users\Garsdal\Documents\GitHub\mlops_exercises\day_4\vae_mnist_working.py", line 154, in <module>
+    images = wandb.Image(generated_images[0:5,:,:,:], caption="Generated images")
+IndexError: too many indices for tensor of dimension 2

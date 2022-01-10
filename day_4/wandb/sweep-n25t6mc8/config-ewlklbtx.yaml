@@ -1,0 +1,13 @@
+wandb_version: 1
+
+epochs:
+  value:
+  - 20
+  - 40
+  - 60
+  - 80
+  - 100
+latent_dim:
+  value: 20
+lr:
+  value: 0.003

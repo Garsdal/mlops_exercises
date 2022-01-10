@@ -1,0 +1,1 @@
+{"batch_size": 100, "_runtime": 20, "_timestamp": 1641568935, "_step": 346, "lr": 0.001, "latent_dim": 20, "loss": 11524.96875, "_wandb": {"runtime": 17}}

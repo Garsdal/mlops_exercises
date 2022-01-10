@@ -1,0 +1,17 @@
+program: vae_mnist_working.py
+method: bayes
+metric:
+  goal: minimize
+  name: loss
+parameters:
+  latent_dim:
+    values: [5, 10, 20, 30, 50]
+  lr:
+    values: [0.001, 0.01, 0.003]
+  epochs:
+    value: [20, 40, 60, 80, 100]
+early_terminate:
+  type: hyperband
+  s: 2
+  eta: 3
+  max_iter: 27
