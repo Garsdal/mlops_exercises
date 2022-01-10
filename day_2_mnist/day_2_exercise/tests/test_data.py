@@ -14,17 +14,16 @@ from src.data.data import mnist
 train_files = ['data/processed/train_images.pt', 'data/processed/train_labels.pt']
 test_files = ['data/processed/test_images.pt', 'data/processed/test_labels.pt']
 
-check = False
+skip = True
 # We check for files
 bools = []
 for file in (train_files + test_files):
     bools.append(os.path.isfile(file))
 
-check = all(np.array(bools))
-print(check)
+skip = not all(np.array(bools))
 
 # We wrap the asserts in a function starting with test_ for the pytest
-@pytest.mark.skipif(~check, reason="Data files not found")
+@pytest.mark.skipif(skip, reason="Data files not found")
 def test_data():
 
     batch_size = 1000
