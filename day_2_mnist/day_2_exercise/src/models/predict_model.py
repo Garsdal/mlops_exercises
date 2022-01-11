@@ -69,7 +69,7 @@ class Evaluate(object):
         batch_size = 50
         train_files = ['data/processed/train_images.pt', 'data/processed/train_labels.pt']
         test_files = ['data/processed/test_images.pt', 'data/processed/test_labels.pt']
-        trainloader, testloader = mnist(train_files, test_files, batch_size = batch_size)# we load all the test data
+        trainloader, testloader, train_data, test_data = mnist(train_files, test_files, batch_size = batch_size)# we load all the test data
         criterion = nn.NLLLoss()
 
         # We carry out a forward pass with the loaded model and print the test set accuracy to the terminal
@@ -88,7 +88,8 @@ class Evaluate(object):
         model = CNN(checkpoint['num_classes'],
                                 checkpoint['channels'],
                                 checkpoint['height'],
-                                checkpoint['width'])
+                                checkpoint['width'],
+                                checkpoint['num_filters'])
         model.load_state_dict(checkpoint['state_dict'])
         
         return model

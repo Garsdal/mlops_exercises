@@ -25,6 +25,8 @@ def setup_folders(folder, subfolder):
         #logging.info(f"{folder + 'png'} does not exist... creating")
         os.makedirs(folder + subfolder)
 
+# The stuff commented out below is for old Hydra code #
+
 # We create a function to init training from the yaml file
 #@hydra.main(config_name='train.yaml')
 def train():
@@ -41,13 +43,13 @@ def train():
 
     # We still have some leftover arguments
     parser = argparse.ArgumentParser(description='Training arguments')
-    parser.add_argument('--lr', default=0.01)
+    parser.add_argument('--lr', default=0.001)
     parser.add_argument('--epochs', default=5)
     parser.add_argument('--path_out_model', default='models/')
     parser.add_argument('--path_out_fig', default='reports/figures/')
     # # add any additional argument that you want
     args = parser.parse_args(sys.argv[2:])
-    # print(args)
+    print(args)
 
     MODEL_TYPE = 'corrupted_mnist'
     RUN_TIME = dt.now().strftime("%m%d_%H%M_%S")
@@ -79,12 +81,10 @@ def train():
 
     # Define model
     model = CNN(num_classes, channels, height, width, num_filters)
-    #hydra.instance().clear()
-    #model, num_classes, channels, height, width = create_model()
-    #print(model)
+    print(model)
 
     criterion = nn.CrossEntropyLoss()
-    optimizer = optim.Adam(model.parameters(), lr=0.01)
+    optimizer = optim.Adam(model.parameters(), lr=args.lr)
 
     steps = 0
     running_loss = 0
@@ -150,6 +150,7 @@ def train():
                     'channels': channels,
                     'height': height,
                     'width': width,
+                    'num_filters' : num_filters,
                     'state_dict': model.state_dict()}
 
     # Save checkpoint
@@ -160,23 +161,6 @@ def train():
 
     # We save the training curve
     print("Model checkpoint was saved at:", ckpt_path)
-
-# We create a function to create the model from the yaml file
-@hydra.main(config_name='model.yaml')
-def create_model(cfg):
-    print(f"configuration: \n {OmegaConf.to_yaml(cfg)}")
-    model_params = cfg
-    
-    # We define model params to be used in the script | We could have put more in depth stuff in the model.yaml file but we will do that later
-    # We are actually breaking the dynamic part of the code by hard coding the values in a config file but it works for now
-    num_classes = model_params['num_classes']
-    channels = model_params['channels']
-    height = model_params['height']
-    width = model_params['width']
-
-    model = CNN(num_classes, channels, height, width)
-
-    return model, [num_classes, channels, height, width]
 
 def validation(model, testloader, criterion, eval = False):
     accuracy = 0
@@ -201,6 +185,23 @@ def validation(model, testloader, criterion, eval = False):
             accuracy = equality.type_as(torch.FloatTensor()).mean()
 
     return test_loss, accuracy 
+
+# We create a function to create the model from the yaml file
+# @hydra.main(config_name='model.yaml')
+# def create_model(cfg):
+#     print(f"configuration: \n {OmegaConf.to_yaml(cfg)}")
+#     model_params = cfg
+    
+#     # We define model params to be used in the script | We could have put more in depth stuff in the model.yaml file but we will do that later
+#     # We are actually breaking the dynamic part of the code by hard coding the values in a config file but it works for now
+#     num_classes = model_params['num_classes']
+#     channels = model_params['channels']
+#     height = model_params['height']
+#     width = model_params['width']
+
+#     model = CNN(num_classes, channels, height, width)
+
+#     return model, [num_classes, channels, height, width]
 
 if __name__ == '__main__':
     train()

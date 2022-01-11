@@ -67,7 +67,8 @@ class Visualize(object):
         model = CNN(checkpoint['num_classes'],
                                 checkpoint['channels'],
                                 checkpoint['height'],
-                                checkpoint['width'])
+                                checkpoint['width'],
+                                checkpoint['num_filters'])
         model.load_state_dict(checkpoint['state_dict'])
         
         return model
