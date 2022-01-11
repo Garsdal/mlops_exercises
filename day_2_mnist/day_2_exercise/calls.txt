@@ -30,3 +30,7 @@ docker run --name train_model --rm -v train trainer2:latest train
 # predictions (not implemented correctly)
 docker run --name predict_model --rm -v evaluate -v --ckpt models/corrupted_mnist_model_0104_1542_57/ckpt/checkpoint_CNN.pth predict:latest evaluate --ckpt models/corrupted_mnist_model_0104_1542_57/ckpt/checkpoint_CNN.pth
 
+
+## GCLOUD ##
+# We create a new instance of a vm with pytorch
+gcloud compute instances create mlops-vm-pytorch --zone=europe-west2-c --image-family=pytorch-cpu --image-project=deeplearning-platform-release
