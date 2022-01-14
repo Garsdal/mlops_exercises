@@ -14,8 +14,7 @@ python src/visualization/visualize.py visualize --ckpt models/corrupted_mnist_mo
 # The argument after the .py file indicates which method is called when the file is run. 
 # This method can then be called with additional arguments as normally
 
-# Docker code #
-
+## Docker code ##
 # build the docker for trainer
 docker build -f trainer.dockerfile . -t trainer:latest
 
@@ -28,9 +27,35 @@ docker run --name train_model --rm -v train trainer2:latest train
 # predictions (not implemented correctly)
 docker run --name predict_model --rm -v evaluate -v --ckpt models/corrupted_mnist_model_0104_1542_57/ckpt/checkpoint_CNN.pth predict:latest evaluate --ckpt models/corrupted_mnist_model_0104_1542_57/ckpt/checkpoint_CNN.pth
 
-
 ## GCLOUD ##
 gcloud compute instances list
 
 # We create a new instance of a vm with pytorch
 gcloud compute instances create mlops-vm-pytorch --zone=europe-west2-c --image-family=pytorch-latest-cpu --image-project=deeplearning-platform-release
+
+# Build our GCP docker locally first:
+docker ps -a
+docker rm 
+
+# We build the docker (put in correct image name)
+docker build -f gcp_train.dockerfile . -t gcp_train:latest
+
+# Docker run without arguments for the first gcp docker image
+docker run --name train_model gcp_train:latest  
+
+# Docker run with arguments + bucket
+docker run --name corrupt_mnist_train corrupt_mnist:latest --epochs 10
+docker run --name corrupt_mnist_train corrupt_mnist_bucket:latest --epochs 1 --bucket mlops-first-bucket
+
+# Push the docker to GCP
+docker tag corrupt_mnist_bucket gcr.io/high-verve-337908/corrupt_mnist_bucket
+docker push gcr.io/high-verve-337908/corrupt_mnist_bucket
+
+# We try with a run by submitting the image we have pushed to GCP
+gcloud ai-platform jobs submit training corrupt_mnist_bucket --region europe-west2 --master-image-uri gcr.io/high-verve-337908/corrupt_mnist_bucket@sha256:7f976becf57c100f0a03fc1953f72408b164d6bc7dcdb90e65253d81b34d9e0a -- --epochs 5 --bucket mlops-first-bucket
+
+# We monitor the run by (also shows the args the run is being run with):
+gcloud ai-platform jobs describe corrupt_mnist_bucket
+
+# Right now we are also copying data into the container which is not good practice this should also be loaded from the bucket
+# Kasper Telkamp var også ved at lave bucket storage hvis spørgsmål

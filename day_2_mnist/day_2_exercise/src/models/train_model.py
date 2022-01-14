@@ -13,6 +13,9 @@ import os
 import hydra
 from omegaconf import OmegaConf
 
+import datetime as datetime
+from google.cloud import storage
+
 # Own imports
 from src.models.model import FFNN, CNN
 from src.data.data import mnist
@@ -20,12 +23,36 @@ from src.data.data import mnist
 # Fix SKlearn
 os.environ['KMP_DUPLICATE_LIB_OK']='True'
 
+# We set the environment variable such that we have google authentication it could also be done with google oauth i think
+os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = "key.json"
+
 def setup_folders(folder, subfolder):
     if not os.path.exists(folder + subfolder):
         #logging.info(f"{folder + 'png'} does not exist... creating")
         os.makedirs(folder + subfolder)
 
 # The stuff commented out below is for old Hydra code #
+
+def upload_blob(bucket_name, source_file_name, destination_blob_name):
+        """Uploads a file to the bucket."""
+        # The ID of your GCS bucket
+        # bucket_name = "your-bucket-name"
+        # The path to your file to upload
+        # source_file_name = "local/path/to/file"
+        # The ID of your GCS object
+        # destination_blob_name = "storage-object-name"
+
+        storage_client = storage.Client()
+        bucket = storage_client.bucket(bucket_name)
+        blob = bucket.blob(destination_blob_name)
+
+        blob.upload_from_filename(source_file_name)
+
+        print(
+            "Bucket upload: File {} uploaded to {}.".format(
+                source_file_name, destination_blob_name
+            )
+        )
 
 # We create a function to init training from the yaml file
 #@hydra.main(config_name='train.yaml')
@@ -42,13 +69,14 @@ def train():
     #print("wd", os.getcwd())
 
     # We still have some leftover arguments
-    parser = argparse.ArgumentParser(description='Training arguments')
+    parser = argparse.ArgumentParser()
     parser.add_argument('--lr', default=0.001)
     parser.add_argument('--epochs', default=5)
     parser.add_argument('--path_out_model', default='models/')
     parser.add_argument('--path_out_fig', default='reports/figures/')
+    parser.add_argument('--bucket', type=str)
     # # add any additional argument that you want
-    args = parser.parse_args(sys.argv[2:])
+    args = parser.parse_args()
     print(args)
 
     MODEL_TYPE = 'corrupted_mnist'
@@ -140,7 +168,7 @@ def train():
         plt.savefig(fig_path, dpi=500)
 
     # We save the training curve
-    print("Training curve was saved at:", fig_path)
+    print("Training curve was saved locally at:", fig_path)
 
     # We extract information from the model
     print(model.parameters())
@@ -160,7 +188,14 @@ def train():
     torch.save(checkpoint, ckpt_path)
 
     # We save the training curve
-    print("Model checkpoint was saved at:", ckpt_path)
+    print("Model checkpoint was saved locally at:", ckpt_path)
+
+    # save the model checkpoint to cloud
+    if args.bucket:
+        bucket_name = args.bucket
+        source_file_name = ckpt_path
+        destination_blob_name = f'corrupted_mnist/models/{MODEL_TYPE}_model_{RUN_TIME}.pth'
+        upload_blob(bucket_name, source_file_name, destination_blob_name)
 
 def validation(model, testloader, criterion, eval = False):
     accuracy = 0
@@ -204,4 +239,14 @@ def validation(model, testloader, criterion, eval = False):
 #     return model, [num_classes, channels, height, width]
 
 if __name__ == '__main__':
+
+    # model_dir = 'gs://mlops-first-bucket/mnist/models'
+    # model_name = 'models/corrupted_mnist_model_0112_1617_24/ckpt/checkpoint_CNN.pth'
+    # bucket = storage.Client().bucket(model_dir)
+    # print(bucket)
+    # blob = bucket.blob('{}/{}'.format(
+    #      datetime.datetime.now().strftime('sonar_%Y%m%d_%H%M%S'),
+    #      model_name))
+    # print(blob)
+    # blob.upload_from_filename(model_name)
     train()
