@@ -1,0 +1,2 @@
+2022-01-17T14:54:58,262 - HandlerTime.Milliseconds:337.75|#ModelName:my_fancy_model,Level:Model|#hostname:LAPTOP-0LT5I2J5,requestID:fa557d5f-2cfb-4942-aa40-440f3991c63f,timestamp:1642427698
+2022-01-17T14:54:58,263 - PredictionTime.Milliseconds:337.75|#ModelName:my_fancy_model,Level:Model|#hostname:LAPTOP-0LT5I2J5,requestID:fa557d5f-2cfb-4942-aa40-440f3991c63f,timestamp:1642427698

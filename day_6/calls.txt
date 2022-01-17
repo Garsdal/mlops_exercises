@@ -1,0 +1,6 @@
+torch-model-archiver --model-name my_fancy_model --version 1.0 --serialized-file deployable_model.pt --export-path model_store --extra-files index_to_name.json --handler image_classifier
+
+torchserve --start --ncs --model-store model_store --models my_fancy_model=my_fancy_model.mar
+
+# After serving the model on a local server in another terminal we can now infer using the model on an image
+curl http://127.0.0.1:8080/predictions/my_fancy_model -T my_cat.jpg

@@ -52,7 +52,7 @@ docker tag corrupt_mnist_bucket gcr.io/high-verve-337908/corrupt_mnist_bucket
 docker push gcr.io/high-verve-337908/corrupt_mnist_bucket
 
 # We try with a run by submitting the image we have pushed to GCP
-gcloud ai-platform jobs submit training corrupt_mnist_bucket --region europe-west2 --master-image-uri gcr.io/high-verve-337908/corrupt_mnist_bucket@sha256:7f976becf57c100f0a03fc1953f72408b164d6bc7dcdb90e65253d81b34d9e0a -- --epochs 5 --bucket mlops-first-bucket
+gcloud ai-platform jobs submit training corrupt_mnist_bucket_test --region europe-west2 --master-image-uri gcr.io/high-verve-337908/corrupt_mnist_bucket@sha256:7f976becf57c100f0a03fc1953f72408b164d6bc7dcdb90e65253d81b34d9e0a -- --epochs 5 --bucket mlops-first-bucket
 
 # We monitor the run by (also shows the args the run is being run with):
 gcloud ai-platform jobs describe corrupt_mnist_bucket
