@@ -6,6 +6,6 @@ This is a repository for handing in all local code and exercise done for the cou
 * day_4 contains wandb exercises and profiling.
 * day_5 contains the scalable application exercises.
 * day_6 contains deployment exercises.
-* day_7 contains monitoring exercises.
+* The monitoring exercises are found in GCP.
 
-Some modules were not implemented on the corrupted MNIST example presented in this repository. An example could be the PyTorch lightning module which was implemented directly for the course project. Also
+Some modules were not implemented on the corrupted MNIST example presented in this repository. An example could be the PyTorch lightning module which was implemented directly for the course project.
